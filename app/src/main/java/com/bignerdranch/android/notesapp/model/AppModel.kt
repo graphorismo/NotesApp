@@ -1,9 +1,12 @@
 package com.bignerdranch.android.notesapp.model
 
+import kotlinx.coroutines.delay
+
 class AppModel {
     private var notes = mutableListOf<NoteModel>();
 
-    fun fillWithDummyData(){
+    suspend fun fillWithDummyData(){
+        delay(2000L)
         repeat(35){
             notes.add(NoteModel())
         }
