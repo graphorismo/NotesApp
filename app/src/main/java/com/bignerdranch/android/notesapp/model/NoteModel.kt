@@ -5,6 +5,7 @@ import java.util.*
 data class NoteModel(
     val id: UUID = UUID.randomUUID(),
     var title: String = "Title",
-    var description: String = "Description"
+    var description: String = "Description",
+    var checked: Boolean = false
 ) {
 }

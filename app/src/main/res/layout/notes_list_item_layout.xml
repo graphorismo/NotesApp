@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="15dp"
+    android:paddingVertical="5dp"
+    android:layout_margin="5dp">
+
+    <TextView
+        android:id="@+id/notesListItem_textViewTitle"
+        android:layout_width="205dp"
+        android:layout_height="33dp"
+        android:text="TITLE"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/notesListItem_textViewDescription"
+        android:layout_width="206dp"
+        android:layout_height="40dp"
+        android:text="DESCRIPTION"
+        app:layout_constraintEnd_toEndOf="@+id/notesListItem_textViewTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notesListItem_textViewTitle" />
+
+    <CheckBox
+        android:id="@+id/notesListItem_checkBoxDone"
+        android:layout_width="113dp"
+        android:layout_height="70dp"
+        android:text="DONE"
+        app:layout_constraintStart_toEndOf="@+id/notesListItem_textViewTitle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/notesListItem_imageButtonDelete"
+        android:layout_width="59dp"
+        android:layout_height="63dp"
+        app:layout_constraintStart_toEndOf="@+id/notesListItem_checkBoxDone"
+        app:layout_constraintTop_toTopOf="@+id/notesListItem_checkBoxDone"
+        app:srcCompat="@drawable/ic_baseline_delete_24"
+        tools:ignore="SpeakableTextPresentCheck" />
+</androidx.constraintlayout.widget.ConstraintLayout>
