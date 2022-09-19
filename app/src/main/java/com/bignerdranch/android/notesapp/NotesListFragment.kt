@@ -42,11 +42,10 @@ class NotesListFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        recyclerViewAdapter = NotesListAdapter(this, activityViewModel.appModel)
+        binding.recyclerView.adapter = recyclerViewAdapter
         binding.recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        recyclerViewAdapter = NotesListAdapter(this)
-        binding.recyclerView.adapter = recyclerViewAdapter
-        recyclerViewAdapter.setItems(activityViewModel.appModel.getNotes())
     }
 
     override fun onDestroyView() {

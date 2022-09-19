@@ -5,13 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.notesapp.databinding.NotesListItemLayoutBinding
+import com.bignerdranch.android.notesapp.model.AppModel
 import com.bignerdranch.android.notesapp.model.NoteModel
 
-class NotesListAdapter(var callbacks: NotesListAdapter.ICallbacks):
-    RecyclerView.Adapter<NotesListAdapter.NotesListViewHolder>() {
-
+class NotesListAdapter(
+    var callbacks: NotesListAdapter.ICallbacks,
+    var model: AppModel
+):
+    RecyclerView.Adapter<NotesListAdapter.NotesListViewHolder>()
+{
     interface ICallbacks{
-
         fun onItemClick(itemId: Int)
         fun onDeleteClick(itemId: Int)
         fun onCheckBoxClick(itemId: Int, newState: Boolean)
@@ -21,8 +24,6 @@ class NotesListAdapter(var callbacks: NotesListAdapter.ICallbacks):
 
     class NotesListViewHolder(val view: View): RecyclerView.ViewHolder(view)
 
-    var notes = mutableListOf<NoteModel>()
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesListViewHolder {
         binding = NotesListItemLayoutBinding
             .inflate(LayoutInflater.from(parent.context), parent,false)
@@ -30,7 +31,8 @@ class NotesListAdapter(var callbacks: NotesListAdapter.ICallbacks):
     }
 
     override fun onBindViewHolder(holder: NotesListViewHolder, position: Int) {
-        val note = notes[position]
+        holder.setIsRecyclable(false)
+        val note = model.getNotes()[position]
         binding.notesListItemTextViewTitle.text = note.title
         binding.notesListItemTextViewDescription.text = note.description
         binding.notesListItemCheckBoxDone.isChecked = note.checked
@@ -38,22 +40,16 @@ class NotesListAdapter(var callbacks: NotesListAdapter.ICallbacks):
             callbacks.onItemClick(position)
         }
         binding.notesListItemImageButtonDelete.setOnClickListener(){
-            notes.drop(position)
-            notifyItemRemoved(position)
-            notifyItemRangeChanged(position, notes.size);
-            callbacks.onDeleteClick(position)
+            model.removeNoteUnderId(position)
+            notifyDataSetChanged()
         }
         binding.notesListItemCheckBoxDone.setOnClickListener(){
-            callbacks.onCheckBoxClick(position, !binding.notesListItemCheckBoxDone.isChecked)
+            val note = model.getNotes()[position]
         }
     }
 
     override fun getItemCount(): Int {
-        return notes.size
-    }
-
-    public fun setItems(items: List<NoteModel>){
-        notes = items.toMutableList()
+        return model.getNotesAmount()
     }
 
 }

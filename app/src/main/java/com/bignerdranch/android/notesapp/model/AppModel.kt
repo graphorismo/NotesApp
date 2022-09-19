@@ -21,6 +21,10 @@ class AppModel {
     }
 
     fun removeNoteUnderId(itemId: Int) {
-        notes.drop(itemId)
+        notes.removeAt(itemId)
+    }
+
+    fun getNotesAmount(): Int {
+        return notes.size
     }
 }
