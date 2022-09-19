@@ -8,11 +8,19 @@ class AppModel {
     suspend fun fillWithDummyData(){
         delay(2000L)
         repeat(35){
-            notes.add(NoteModel())
+            notes.add(NoteModel(title = it.toString()))
         }
     }
 
     fun getNotes(): List<NoteModel>{
         return notes.toList()
+    }
+
+    fun getNoteUnderId(itemId: Int): NoteModel {
+        return notes[itemId]
+    }
+
+    fun removeNoteUnderId(itemId: Int) {
+        notes.drop(itemId)
     }
 }

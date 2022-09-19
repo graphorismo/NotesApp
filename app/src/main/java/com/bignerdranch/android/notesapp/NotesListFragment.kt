@@ -6,17 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bignerdranch.android.notesapp.adapter.NotesListAdapter
 import com.bignerdranch.android.notesapp.databinding.FragmentNotesListBinding
-import com.bignerdranch.android.notesapp.databinding.FragmentStartBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.bignerdranch.android.notesapp.model.NoteModel
 
 
-class NotesListFragment : Fragment() {
+class NotesListFragment :
+    Fragment(),
+    NotesListAdapter.ICallbacks
+{
+
+    interface ICalbacks{
+        fun onNoteOpen(note: NoteModel)
+    }
+
+    lateinit var recyclerViewAdapter: NotesListAdapter
+
     private var _binding: FragmentNotesListBinding? = null
     // This property is only valid between onCreateView and
 // onDestroyView.
@@ -38,13 +44,25 @@ class NotesListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        var adapter = NotesListAdapter()
-        binding.recyclerView.adapter = adapter
-        adapter.setItems(activityViewModel.appModel.getNotes())
+        recyclerViewAdapter = NotesListAdapter(this)
+        binding.recyclerView.adapter = recyclerViewAdapter
+        recyclerViewAdapter.setItems(activityViewModel.appModel.getNotes())
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onItemClick(itemId: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteClick(itemId: Int) {
+        activityViewModel.appModel.removeNoteUnderId(itemId)
+    }
+
+    override fun onCheckBoxClick(itemId: Int, newState: Boolean) {
+        activityViewModel.appModel.getNoteUnderId(itemId).checked = newState
     }
 }
