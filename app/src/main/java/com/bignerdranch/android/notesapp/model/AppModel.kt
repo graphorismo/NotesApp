@@ -20,11 +20,19 @@ class AppModel {
         return notes[itemId]
     }
 
+    fun getSize(): Int{
+        return notes.size
+    }
+
     fun removeNoteUnderId(itemId: Int) {
         notes.removeAt(itemId)
     }
 
     fun getNotesAmount(): Int {
         return notes.size
+    }
+
+    fun addNewBlankNote() {
+        notes.add(NoteModel())
     }
 }

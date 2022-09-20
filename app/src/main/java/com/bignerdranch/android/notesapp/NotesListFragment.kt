@@ -46,6 +46,11 @@ class NotesListFragment :
         binding.recyclerView.adapter = recyclerViewAdapter
         binding.recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.button.setOnClickListener(){
+            activityViewModel.appModel.addNewBlankNote()
+            (activity as ICallbacks)
+                .onNoteOpen(activityViewModel.appModel.getNotesAmount()-1)
+        }
     }
 
     override fun onDestroyView() {
