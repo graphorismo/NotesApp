@@ -8,7 +8,7 @@
     tools:context=".NoteViewFragment" >
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonExit"
         android:layout_width="172dp"
         android:layout_height="48dp"
         android:text="EXIT"
@@ -18,14 +18,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonSave"
         android:layout_width="180dp"
         android:layout_height="49dp"
         android:layout_marginStart="8dp"
         android:text="SAVE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.204"
-        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintStart_toEndOf="@+id/buttonExit"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -35,9 +35,9 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="TITLE"
-        app:layout_constraintEnd_toEndOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintEnd_toEndOf="@+id/buttonSave"
+        app:layout_constraintStart_toStartOf="@+id/buttonExit"
+        app:layout_constraintTop_toBottomOf="@+id/buttonExit" />
 
     <EditText
         android:id="@+id/editTextTextMultiLine"

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import androidx.fragment.app.activityViewModels
 import com.bignerdranch.android.notesapp.databinding.FragmentNoteViewBinding
 import com.bignerdranch.android.notesapp.databinding.FragmentNotesListBinding
@@ -15,6 +16,10 @@ private const val ARG_NOTE_ID = "ARG_NOTE_ID"
 
 
 class NoteViewFragment : Fragment() {
+
+    interface ICallbacks{
+        fun onNoteViewFragmentExit()
+    }
 
     private var noteId: Int? = null
     private var noteModel: NoteModel? = null
@@ -45,6 +50,15 @@ class NoteViewFragment : Fragment() {
         val view = binding.root
         binding.editTextTextPersonName.setText(noteModel!!.title)
         binding.editTextTextMultiLine.setText(noteModel!!.description)
+        binding.checkBox.isChecked= noteModel!!.checked
+        binding.buttonSave.setOnClickListener(){
+            noteModel!!.title = binding.editTextTextPersonName.text.toString()
+            noteModel!!.description = binding.editTextTextMultiLine.text.toString()
+            noteModel!!.checked = binding.checkBox.isChecked
+        }
+        binding.buttonExit.setOnClickListener(){
+            (activity as NoteViewFragment.ICallbacks).onNoteViewFragmentExit()
+        }
         return view
     }
 

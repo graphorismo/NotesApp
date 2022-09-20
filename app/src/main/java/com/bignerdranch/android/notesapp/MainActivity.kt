@@ -11,7 +11,8 @@ import kotlinx.coroutines.launch
 class MainActivity :
     AppCompatActivity(),
     StartFragment.ICallbacks,
-    NotesListFragment.ICallbacks
+    NotesListFragment.ICallbacks,
+    NoteViewFragment.ICallbacks
 {
 
     val viewModel: MainViewModel by viewModels()
@@ -63,5 +64,9 @@ class MainActivity :
 
     override fun onNoteOpen(noteid: Int) {
         showNoteViewFragment(noteid)
+    }
+
+    override fun onNoteViewFragmentExit() {
+        showNotesListFragment()
     }
 }
