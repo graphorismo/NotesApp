@@ -17,8 +17,8 @@ class NotesListFragment :
     NotesListAdapter.ICallbacks
 {
 
-    interface ICalbacks{
-        fun onNoteOpen(note: NoteModel)
+    interface ICallbacks{
+        fun onNoteOpen(noteid: Int)
     }
 
     lateinit var recyclerViewAdapter: NotesListAdapter
@@ -54,14 +54,7 @@ class NotesListFragment :
     }
 
     override fun onItemClick(itemId: Int) {
-        TODO("Not yet implemented")
+        (activity as NotesListFragment.ICallbacks).onNoteOpen(itemId)
     }
 
-    override fun onDeleteClick(itemId: Int) {
-        activityViewModel.appModel.removeNoteUnderId(itemId)
-    }
-
-    override fun onCheckBoxClick(itemId: Int, newState: Boolean) {
-        activityViewModel.appModel.getNoteUnderId(itemId).checked = newState
-    }
 }

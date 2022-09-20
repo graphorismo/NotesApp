@@ -3,6 +3,7 @@ package com.bignerdranch.android.notesapp.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.notesapp.databinding.NotesListItemLayoutBinding
 import com.bignerdranch.android.notesapp.model.AppModel
@@ -16,8 +17,6 @@ class NotesListAdapter(
 {
     interface ICallbacks{
         fun onItemClick(itemId: Int)
-        fun onDeleteClick(itemId: Int)
-        fun onCheckBoxClick(itemId: Int, newState: Boolean)
     }
 
     private lateinit var binding: NotesListItemLayoutBinding
@@ -44,7 +43,7 @@ class NotesListAdapter(
             notifyDataSetChanged()
         }
         binding.notesListItemCheckBoxDone.setOnClickListener(){
-            val note = model.getNotes()[position]
+            note.checked=(it as CheckBox).isChecked
         }
     }
 

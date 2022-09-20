@@ -10,7 +10,8 @@ import kotlinx.coroutines.launch
 
 class MainActivity :
     AppCompatActivity(),
-    StartFragment.ICallbacks
+    StartFragment.ICallbacks,
+    NotesListFragment.ICallbacks
 {
 
     val viewModel: MainViewModel by viewModels()
@@ -48,5 +49,19 @@ class MainActivity :
                 R.id.activityMain_fragmentContainerView,
                 notesListFragment)
             .commit()
+    }
+
+    private fun showNoteViewFragment(noteId: Int){
+        var noteViewFragment = NoteViewFragment.newInstance(noteId)
+        supportFragmentManager
+            .beginTransaction()
+            .replace(
+                R.id.activityMain_fragmentContainerView,
+                noteViewFragment)
+            .commit()
+    }
+
+    override fun onNoteOpen(noteid: Int) {
+        showNoteViewFragment(noteid)
     }
 }
