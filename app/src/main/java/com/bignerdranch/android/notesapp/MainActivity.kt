@@ -22,11 +22,19 @@ class MainActivity :
         setContentView(R.layout.activity_main)
     }
 
+    override fun onPause() {
+        super.onPause()
+        lifecycleScope
+            .launch(Dispatchers.Default){
+                viewModel.appModel.saveToDatabase()
+            }
+    }
+
     override fun onStartScreenEnd() {
         showALoadFragment()
         this.lifecycleScope
             .launch(Dispatchers.Default) {
-                viewModel.appModel.fillWithDummyData()
+                viewModel.appModel.loadFromDatabase()
                 showNotesListFragment()
             }
 

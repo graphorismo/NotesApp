@@ -1,5 +1,6 @@
 package com.bignerdranch.android.notesapp.model
 
+import com.bignerdranch.android.notesapp.data.NotesRepository
 import kotlinx.coroutines.delay
 
 class AppModel {
@@ -34,5 +35,13 @@ class AppModel {
 
     fun addNewBlankNote() {
         notes.add(NoteModel())
+    }
+
+    suspend fun saveToDatabase() {
+        NotesRepository.get().saveNotes(notes)
+    }
+
+    suspend fun loadFromDatabase() {
+        notes = NotesRepository.get().loadNotes().toMutableList()
     }
 }
