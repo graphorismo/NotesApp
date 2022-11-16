@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/notesListItem_constraintLayout"
@@ -7,39 +8,45 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:paddingHorizontal="15dp"
-    android:paddingVertical="5dp">
+    android:paddingVertical="5dp"
+    android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/notesListItem_textViewTitle"
-        android:layout_width="204dp"
-        android:layout_height="30dp"
-        android:text="TITLE"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="0.7"
+        >
 
-    <TextView
-        android:id="@+id/notesListItem_textViewDescription"
-        android:layout_width="206dp"
-        android:layout_height="40dp"
-        android:text="DESCRIPTION"
-        app:layout_constraintEnd_toEndOf="@+id/notesListItem_textViewTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notesListItem_textViewTitle" />
+        <TextView
+            android:id="@+id/notesListItem_textViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="TITLE" />
+
+        <TextView
+            android:id="@+id/notesListItem_textViewDescription"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="DESCRIPTION"
+            />
+
+    </LinearLayout>
 
     <CheckBox
         android:id="@+id/notesListItem_checkBoxDone"
-        android:layout_width="113dp"
-        android:layout_height="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:text="DONE"
-        app:layout_constraintStart_toEndOf="@+id/notesListItem_textViewTitle"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_weight="1"/>
 
     <ImageButton
         android:id="@+id/notesListItem_imageButtonDelete"
-        android:layout_width="59dp"
-        android:layout_height="63dp"
-        app:layout_constraintStart_toEndOf="@+id/notesListItem_checkBoxDone"
-        app:layout_constraintTop_toTopOf="@+id/notesListItem_checkBoxDone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         app:srcCompat="@drawable/ic_baseline_delete_24"
         tools:ignore="SpeakableTextPresentCheck" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
