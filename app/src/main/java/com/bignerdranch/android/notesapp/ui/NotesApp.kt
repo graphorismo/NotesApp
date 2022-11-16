@@ -1,4 +1,4 @@
-package com.bignerdranch.android.notesapp
+package com.bignerdranch.android.notesapp.ui
 
 import android.app.Application
 import com.bignerdranch.android.notesapp.data.NotesRepository

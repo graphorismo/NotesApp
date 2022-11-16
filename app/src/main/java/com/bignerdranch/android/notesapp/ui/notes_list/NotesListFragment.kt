@@ -1,4 +1,4 @@
-package com.bignerdranch.android.notesapp
+package com.bignerdranch.android.notesapp.ui.notes_list
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bignerdranch.android.notesapp.adapter.NotesListAdapter
 import com.bignerdranch.android.notesapp.databinding.FragmentNotesListBinding
-import com.bignerdranch.android.notesapp.model.NoteModel
+import com.bignerdranch.android.notesapp.ui.MainViewModel
 
 
 class NotesListFragment :
@@ -59,7 +59,7 @@ class NotesListFragment :
     }
 
     override fun onItemClick(itemId: Int) {
-        (activity as NotesListFragment.ICallbacks).onNoteOpen(itemId)
+        (activity as ICallbacks).onNoteOpen(itemId)
     }
 
 }

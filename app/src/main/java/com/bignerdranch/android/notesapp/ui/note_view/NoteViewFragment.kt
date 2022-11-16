@@ -1,15 +1,14 @@
-package com.bignerdranch.android.notesapp
+package com.bignerdranch.android.notesapp.ui.note_view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import androidx.fragment.app.activityViewModels
 import com.bignerdranch.android.notesapp.databinding.FragmentNoteViewBinding
-import com.bignerdranch.android.notesapp.databinding.FragmentNotesListBinding
 import com.bignerdranch.android.notesapp.model.NoteModel
+import com.bignerdranch.android.notesapp.ui.MainViewModel
 import java.lang.Exception
 
 private const val ARG_NOTE_ID = "ARG_NOTE_ID"

@@ -1,10 +1,14 @@
-package com.bignerdranch.android.notesapp
+package com.bignerdranch.android.notesapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.bignerdranch.android.notesapp.*
+import com.bignerdranch.android.notesapp.ui.load.LoadFragment
+import com.bignerdranch.android.notesapp.ui.note_view.NoteViewFragment
+import com.bignerdranch.android.notesapp.ui.notes_list.NotesListFragment
+import com.bignerdranch.android.notesapp.ui.start.StartFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

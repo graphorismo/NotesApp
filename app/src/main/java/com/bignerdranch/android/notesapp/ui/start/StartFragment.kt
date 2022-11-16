@@ -1,4 +1,4 @@
-package com.bignerdranch.android.notesapp
+package com.bignerdranch.android.notesapp.ui.start
 
 import android.os.Bundle
 import android.view.LayoutInflater

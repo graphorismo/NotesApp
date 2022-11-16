@@ -1,4 +1,4 @@
-package com.bignerdranch.android.notesapp
+package com.bignerdranch.android.notesapp.ui
 
 import androidx.lifecycle.ViewModel
 import com.bignerdranch.android.notesapp.model.AppModel

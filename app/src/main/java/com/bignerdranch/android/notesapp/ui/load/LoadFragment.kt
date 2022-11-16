@@ -1,4 +1,4 @@
-package com.bignerdranch.android.notesapp
+package com.bignerdranch.android.notesapp.ui.load
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
