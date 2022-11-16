@@ -1,4 +1,4 @@
-package com.bignerdranch.android.notesapp.adapter
+package com.bignerdranch.android.notesapp.ui.notes_list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +7,9 @@ import android.widget.CheckBox
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.notesapp.databinding.NotesListItemLayoutBinding
 import com.bignerdranch.android.notesapp.model.AppModel
-import com.bignerdranch.android.notesapp.model.NoteModel
 
 class NotesListAdapter(
-    var callbacks: NotesListAdapter.ICallbacks,
+    var callbacks: ICallbacks,
     var model: AppModel
 ):
     RecyclerView.Adapter<NotesListAdapter.NotesListViewHolder>()
